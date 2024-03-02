@@ -1,7 +1,8 @@
 import allure
 
-from constants.constants import Url
+from constants.urls import Url
 from pages.main_functionality_page import MainFunctionalityPage
+from pages.personal_account_page import PersonalAccountPage
 
 
 @allure.story('Тесты основного функционала')
@@ -51,7 +52,8 @@ class TestsMainFunctionality:
     def test_checkout(self, driver, user):
         main_functionality_page = MainFunctionalityPage(driver)
         main_functionality_page.transition_site(Url.LOGIN)
-        main_functionality_page.login_to_account(user["email"], user["password"])
+        personal_account_page = PersonalAccountPage(driver)
+        personal_account_page.login_to_account(user)
         main_functionality_page.transferring_ingredient_constructor()
         main_functionality_page.click_button_place_an_order()
         result = main_functionality_page.get_text_pop_up_window()

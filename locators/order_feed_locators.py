@@ -8,6 +8,8 @@ class OrderFeedLocators(BasePageLocators):
     POP_UP_WINDOW_ORDER = (By.XPATH, ".//*[@class='Modal_modal_opened__3ISw4 Modal_modal__P3_V5']")
     NUM_ORDER = (By.XPATH, ".//*[@class='Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text "
                            "text_type_digits-large mb-8']")
-    ALL_ORDERS = (By.XPATH, ".//div/div/div/div[2]/p[2]")
-    ORDERS_TODAY = (By.XPATH, ".//div/div/div/div[3]/p[2]")
-    AT_WORK = (By.XPATH, ".//div[1]/ul[2]/li")
+    ALL_ORDERS = (By.XPATH, ".//p[text() = 'Выполнено за все время:']/following-sibling::p[@class = "
+                            "'OrderFeed_number__2MbrQ text text_type_digits-large']")
+    ORDERS_TODAY = (By.XPATH, "//div[last()]/p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")
+    AT_WORK = (By.XPATH, "//ul[contains(@class, 'ListReady')]/li")
+    STR_NUM_ORDER = (By.XPATH, ".//*[text()='#0{num_order}']")

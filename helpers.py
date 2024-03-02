@@ -1,10 +1,12 @@
+import allure
 import requests
 import random
 import string
 
-from constants.constants import Url
+from constants.urls import Url
 
 
+@allure.step(f'Регистрация пользователя и получение тестовых данных')
 def register_new_user_and_return_test_data():
     name = generate_string(10)
     password = generate_string(10)
@@ -28,12 +30,14 @@ def register_new_user_and_return_test_data():
     return test_data
 
 
+@allure.step(f'Генерация случайной строки')
 def generate_string(length):
     letters = string.ascii_lowercase
     random_string = ''.join(random.choice(letters) for i in range(length))
     return random_string
 
 
+@allure.step(f'Вход в аккаунт')
 def login_user(email, password):
     payload = {
         "email": email,
@@ -44,7 +48,7 @@ def login_user(email, password):
     return response
 
 
+@allure.step(f'Удаление пользователя')
 def delite_user(access_token):
     headers = {'Authorization': access_token}
-    response = requests.delete(Url.USER, headers=headers)
-    return response.json()
+    requests.delete(Url.USER, headers=headers)

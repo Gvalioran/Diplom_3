@@ -11,9 +11,9 @@ class PersonalAccountPage(BasePage):
         self.find_element_located_click(PersonalAccountLocators.PERSONAL_ACCOUNT_BUTTON)
 
     @allure.step("Вход в аккаунт")
-    def login_to_account(self, email, password):
-        self.find_element_located_input(PersonalAccountLocators.LOGIN_EMAIL_INPUT_FIELD, email)
-        self.find_element_located_input(PersonalAccountLocators.LOGIN_PASSWORD_INPUT_FIELD, password)
+    def login_to_account(self, data):
+        self.find_element_located_input(PersonalAccountLocators.LOGIN_EMAIL_INPUT_FIELD, data["email"])
+        self.find_element_located_input(PersonalAccountLocators.LOGIN_PASSWORD_INPUT_FIELD, data["password"])
         self.find_element_located_click(PersonalAccountLocators.ENTER_TO_ACCOUNT)
 
     @allure.step("Переход в историю заказов")

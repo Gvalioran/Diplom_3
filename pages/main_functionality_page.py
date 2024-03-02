@@ -1,10 +1,10 @@
 import allure
 
-from pages.personal_account_page import PersonalAccountPage
+from pages.base_page import BasePage
 from locators.main_functionality_locators import MainFunctionalityLocators
 
 
-class MainFunctionalityPage(PersonalAccountPage):
+class MainFunctionalityPage(BasePage):
     @allure.step("Переход к конструктору")
     def transition_to_constructor(self):
         self.find_element_located_click(MainFunctionalityLocators.CONSTRUCTOR_BUTTON)

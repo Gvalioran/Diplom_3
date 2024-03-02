@@ -1,6 +1,6 @@
 import allure
 
-from constants.constants import Url
+from constants.urls import Url
 from pages.personal_account_page import PersonalAccountPage
 
 
@@ -19,7 +19,7 @@ class TestsPersonalAccount:
     def test_going_order_history(self, driver, user):
         personal_account_page = PersonalAccountPage(driver)
         personal_account_page.transition_site(Url.LOGIN)
-        personal_account_page.login_to_account(user["email"], user["password"])
+        personal_account_page.login_to_account(user)
         personal_account_page.transition_to_personal_account()
         personal_account_page.transition_to_order_history()
         result = personal_account_page.get_the_order_history_button_attribute()
@@ -29,7 +29,7 @@ class TestsPersonalAccount:
     def test_account_logout_test(self, driver, user):
         personal_account_page = PersonalAccountPage(driver)
         personal_account_page.transition_site(Url.LOGIN)
-        personal_account_page.login_to_account(user["email"], user["password"])
+        personal_account_page.login_to_account(user)
         personal_account_page.transition_to_personal_account()
         personal_account_page.logout_account()
         assert personal_account_page.search_log_in_account_item()

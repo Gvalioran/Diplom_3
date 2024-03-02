@@ -1,6 +1,6 @@
 import allure
 
-from constants.constants import Url
+from constants.urls import Url
 from pages.recovery_password_page import RecoveryPasswordPage
 
 
